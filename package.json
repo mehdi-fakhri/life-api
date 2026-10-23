@@ -1,0 +1,25 @@
+{
+  "name": "life-api",
+  "version": "1.0.0",
+  "description": "Building a personal API to track my day to day life ( practice )",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehdi-fakhri/life-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mehdi-fakhri/life-api/issues"
+  },
+  "homepage": "https://github.com/mehdi-fakhri/life-api#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
