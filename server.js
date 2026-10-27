@@ -1,11 +1,16 @@
 
 import express from "express";
 
+import fs from "fs";
+
 
 const app = express();
 app.use(express.json());
 
-const sleepLog = [];
+const sleepLog = fs.existsSync("data.json") 
+? JSON.parse(fs.readFileSync("data.json"))
+: [];
+
 
 
 app.get("/api", (req, res)=> {
@@ -20,6 +25,7 @@ app.get("/api", (req, res)=> {
  app.post("/api/sleep", (req,res) => {
     const entry = { hours: req.body.hours, minutes: req.body.minutes };
     sleepLog.push(entry);
+    fs.writeFileSync("data.json",JSON.stringify(sleepLog));
     res.json(entry);
 
 
