@@ -17,6 +17,14 @@ const workoutLog = fs.existsSync("workouts.json")
 ? JSON.parse(fs.readFileSync("workouts.json"))
 : [];
 
+// load books
+const bookLog = fs.existsSync("books.json")
+? JSON.parse(fs.readFileSync("books.json"))
+: [];
+
+
+
+
 
 // check api
 app.get("/api", (req, res)=> {
@@ -53,6 +61,26 @@ app.get("/api/sleep", (req, res)=> {
    res.json(entry);
 
  })
+
+
+// get books
+
+app.get("/api/books", (req, res) =>{
+   res.json(bookLog)
+});
+
+// add books
+
+app.post("/api/books", (req, res) =>{
+   const entry = {title : req.body.title, status : req.body.status};
+   bookLog.push(entry);
+   fs.writeFileSync("books.json", JSON.stringify(bookLog));
+   res.json(entry);
+})
+
+
+
+
 
 // server start
 app.listen(3001, () => {
