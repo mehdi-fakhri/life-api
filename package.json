@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mehdi-fakhri/life-api#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.3.0"
   }
 }

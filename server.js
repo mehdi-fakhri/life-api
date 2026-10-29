@@ -1,3 +1,4 @@
+import cors from "cors";
 
 import express from "express";
 
@@ -6,6 +7,7 @@ import fs from "fs";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // load sleep
 const sleepLog = fs.existsSync("data.json") 
