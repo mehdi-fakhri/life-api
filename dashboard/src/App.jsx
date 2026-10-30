@@ -7,6 +7,7 @@ function App () {
 
   const [sleep,setSleep] = useState([]);
   const [workouts,setWorkouts] = useState([]);
+  const [books,setBooks] = useState([]);
 
 
 useEffect(() => {
@@ -20,6 +21,14 @@ useEffect(() => {
 fetch("http://localhost:3001/api/workouts")
 .then((res) => res.json())
 .then((data) => setWorkouts(data));
+}, [])
+
+
+useEffect(() => {
+  fetch("http://localhost:3001/api/books")
+  .then((res) => res.json())
+  .then((data) => setBooks(data));
+  
 }, [])
 
 
@@ -38,6 +47,11 @@ fetch("http://localhost:3001/api/workouts")
       {workouts.map((entry, index) =>(
         <p key={index}>{entry.exercise} {entry.sets} {entry.reps}</p>
       ))}
+
+      <h3>Books</h3>
+      {books.map((entry, index) =>
+      <p key={index}> {entry.title} title {entry.status} status</p>
+      )}
 
 
 
