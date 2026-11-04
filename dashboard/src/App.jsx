@@ -17,6 +17,12 @@ const [sets, setSets] = useState("");
 const [reps, setReps] = useState("")
 
 
+const [title, setTitle] = useState("");
+const [status, setStatus] = useState("");
+
+
+
+
 
 
 
@@ -68,6 +74,17 @@ function logWorkout(){
 }
 
 
+function logBooks (){
+   fetch("http://localhost:3001/api/books" , {
+    method: "post",
+    headers: {"Content-Type" : "application/json"},
+    body: JSON.stringify({title, status}) 
+}) 
+
+.then((res) => res.json())
+.then((data) =>setBooks ([...books, data]) )
+
+   }
 
 
 
@@ -121,11 +138,27 @@ function logWorkout(){
     placeholder="Reps"
     />
 
+    
+<input
+    value={title}
+    onChange={(e) => setTitle(e.target.value)}
+    placeholder="Title"
+    />
+
+    
+<input
+    value={status}
+    onChange={(e) => setStatus(e.target.value)}
+    placeholder="Status"
+    />
+
 
    
     
 <button onClick={logSleep}>Log sleep</button>       
 <button onClick={logWorkout}>Log workout</button>      
+<button onClick={logBooks}>Log book</button>      
+
 
 
 
