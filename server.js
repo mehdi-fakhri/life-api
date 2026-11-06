@@ -25,9 +25,6 @@ const bookLog = fs.existsSync("books.json")
 : [];
 
 
-
-
-
 // check api
 app.get("/api", (req, res)=> {
     res.json({message: "API is running"})

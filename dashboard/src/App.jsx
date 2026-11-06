@@ -51,6 +51,12 @@ useEffect(() => {
 
 
 function logSleep(){
+
+
+if (hours === "" || minutes ===""){
+  return;
+}
+
   fetch("http://localhost:3001/api/sleep", {
     method: "post",
     headers :{"Content-Type" : "application/json"},
@@ -62,6 +68,11 @@ function logSleep(){
 }
 
 function logWorkout(){
+
+
+  if (sets === "" || reps ==="" || exercise === ""){
+  return;
+}
   fetch("http://localhost:3001/api/workouts" , {
   method: "post",
   headers: {"Content-Type" : "application/json"},
@@ -75,10 +86,17 @@ function logWorkout(){
 
 
 function logBooks (){
+
+if (title === "" || status ===""){
+  return;
+}
+
+
    fetch("http://localhost:3001/api/books" , {
     method: "post",
     headers: {"Content-Type" : "application/json"},
-    body: JSON.stringify({title, status}) 
+        body: JSON.stringify({title, status}) 
+
 }) 
 
 .then((res) => res.json())
@@ -102,9 +120,9 @@ function logBooks (){
         <p key={index}>{entry.exercise} {entry.sets} {entry.reps}</p>
       ))}
 
-      <h3>Books</h3>
+      <h2>Books</h2>
       {books.map((entry, index) =>
-      <p key={index}> {entry.title} title {entry.status} status</p>
+      <p key={index}> {entry.title} : {entry.status} </p>
       )}
 
  <input
@@ -168,27 +186,6 @@ function logBooks (){
 
   
 
-
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
